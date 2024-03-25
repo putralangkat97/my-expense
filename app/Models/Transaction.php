@@ -35,6 +35,6 @@ class Transaction extends Model
 
     public function getLocalDatetimeFormatAttribute(): string
     {
-        return Carbon::parse($this->transaction_date)->timezone($this->getTimezoneAttribute())->format('d/m/Y H:i A');
+        return Carbon::parse($this->transaction_date)->timezone($this->getTimezoneAttribute())->format('D, d M Y H:i A');
     }
 }

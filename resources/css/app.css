@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fadeinout {
+    -webkit-animation: bounce 0.5s ease-in-out both;
+    animation: bounce 0.5s ease-in-out both;
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -8%, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0, 5%, 0);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -8%, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0, 5%, 0);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

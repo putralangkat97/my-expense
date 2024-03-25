@@ -1,6 +1,5 @@
-<div>
-
-    <x-panel class="w-full sm:w-1/2" :href="route('transaction.index')">
+<div class="fadeinout">
+    <x-panel class="w-full sm:w-3/4 md:w-1/2" :href="route('transaction.index')">
         <x-slot:head>
             {{ __('Transaction Detail') }}
         </x-slot>

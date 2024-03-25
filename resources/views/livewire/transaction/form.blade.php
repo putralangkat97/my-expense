@@ -1,4 +1,4 @@
-<div>
+<div class="fadeinout">
     <x-panel class="w-full sm:w-1/2" :href="route('transaction.index')">
         <x-slot:head>
             {{ __('Transaction Form') }}
