@@ -12,9 +12,9 @@ use Livewire\Form;
 
 class TransactionForm extends Form
 {
-    public $transaction_name;
-    public $transaction_value;
-    public $transaction_date;
+    public $transaction_name = '';
+    public $transaction_value = '';
+    public $transaction_date = '';
     public $id;
 
     public function rules()

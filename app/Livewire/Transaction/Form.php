@@ -13,7 +13,7 @@ class Form extends Component
 
     public function mount()
     {
-        if ($this->transaction) {
+        if (isset($this->transaction)) {
             $this->form->setTransaction($this->transaction);
         }
     }
