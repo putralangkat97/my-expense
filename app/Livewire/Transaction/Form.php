@@ -21,7 +21,7 @@ class Form extends Component
     public function save()
     {
         $message = "created";
-        if ($this->transaction) {
+        if (isset($this->transaction)) {
             $message = "updated";
         }
         $this->form->insert();
