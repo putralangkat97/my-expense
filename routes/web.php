@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
-    return route('login');
+    return redirect()->route('login');
 });
 
 Route::middleware('auth')->group(function () {
