@@ -20,4 +20,9 @@
             <span class="">{{ __('No records') }}</span>
         </div>
     @endforelse
+    <div>{{ $loads }}</div>
+
+    <x-primary-button x-intersect.full="$wire.loadMore()">
+        {{ __('View more') }}
+    </x-primary-button>
 </div>
