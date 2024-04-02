@@ -29,9 +29,9 @@ class LocalDateFormat
             ->format('H:i A');
     }
 
-    public static function localDatetimeFormatted(string $value): string
+    public static function localDatetimeFormatted(string $value, string $format = 'D, d M Y H:i A'): string
     {
         return Carbon::parse($value)->timezone(self::getTimezone())
-            ->format('D, d M Y H:i A');
+            ->format($format);
     }
 }

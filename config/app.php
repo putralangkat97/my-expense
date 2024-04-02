@@ -128,10 +128,12 @@ return [
 
     'providers' => ServiceProvider::defaultProviders()->merge([
         Barryvdh\Debugbar\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ])->toArray(),
 
     'aliases' => Facade::defaultAliases()->merge([
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

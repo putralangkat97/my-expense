@@ -22,6 +22,13 @@ Route::middleware('auth')->group(function () {
                 ->name('edit');
         });
 
+    Route::name('report.')
+        ->prefix('/report')
+        ->group(function () {
+            Route::get('/', \App\Livewire\Report\Index::class)
+                ->name('index');
+        });
+
     Route::controller(\App\Http\Controllers\ProfileController::class)
         ->name('profile.')
         ->prefix('/profile')

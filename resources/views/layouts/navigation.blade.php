@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('transaction.index')" :active="request()->routeIs('transaction.*')">
                         {{ __('Transaction') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('report.index')" :active="request()->routeIs('report.*')">
+                        {{ __('Reports') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.*')">
                         {{ __('Profile') }}
                     </x-nav-link>
@@ -80,6 +83,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('transaction.index')" :active="request()->routeIs('transaction.*')">
                 {{ __('Transaction') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('report.index')" :active="request()->routeIs('report.*')">
+                {{ __('Reports') }}
             </x-responsive-nav-link>
         </div>
 
