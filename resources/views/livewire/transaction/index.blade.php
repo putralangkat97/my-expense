@@ -11,11 +11,10 @@
 
     <div class="mb-5">
         @forelse ($transactions as $index => $transaction)
-            <x-input-label :value="$transaction[0]->local_date_format" class="mb-1 text-lg md:text-xl" />
-            <x-transaction-card class="mb-3" :viewLink="route('transaction.show', $transaction[0])" :editLink="route('transaction.edit', $transaction[0])">
-                <x-slot:transactionName>{{ $transaction[0]->transaction_name }}</x-slot>
-                <x-slot:transactionDate>{{ $transaction[0]->local_time_format }}</x-slot>
-                <x-slot:transactionValue>{{ $transaction[0]->local_currency }}</x-slot>
+            <x-transaction-card class="mb-3" :viewLink="route('transaction.show', $transaction['id'])" :editLink="route('transaction.edit', $transaction['id'])">
+                <x-slot:transactionName>{{ $transaction['transaction_name'] }}</x-slot>
+                <x-slot:transactionDate>{{ \App\Helpers\LocalDateFormat::localDatetimeFormatted($transaction['transaction_date']) }}</x-slot>
+                <x-slot:transactionValue>{{ \App\Helpers\LocalDateFormat::getLocalCurrency($transaction['transaction_value']) }}</x-slot>
             </x-transaction-card>
         @empty
             <div
@@ -25,7 +24,9 @@
         @endforelse
     </div>
 
-    <div class="">
-        {{ $transactions->links(data: ['scrollTo' => false]) }}
-    </div>
+    @if ($data_count <= 10 || $count != $data_count)
+        <x-primary-button wire:click="loadMore">
+            {{ __('Load More') }}
+        </x-primary-button>
+    @endif
 </div>

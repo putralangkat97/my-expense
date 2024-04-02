@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'anggit@anggit.com',
         ]);
 
-        $this->call(TransactionSeeder::class);
+        // $this->call(TransactionSeeder::class);
     }
 }

@@ -7,10 +7,12 @@ use Livewire\Component;
 
 class Show extends Component
 {
-    public ?Transaction $transaction;
+    public $id;
 
     public function render()
     {
-        return view('livewire.transaction.show');
+        return view('livewire.transaction.show', [
+            'transaction' => Transaction::findOrFail($this->id),
+        ]);
     }
 }

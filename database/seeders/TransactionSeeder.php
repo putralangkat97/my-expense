@@ -16,7 +16,7 @@ class TransactionSeeder extends Seeder
     {
         DB::table('transactions')->truncate();
 
-        for ($i = 0; $i < 10000; $i++) {
+        for ($i = 0; $i < 27; $i++) {
             $data[] = [
                 'transaction_name' => 'TRX' . rand(2000, 3999) . now()->format('Ymd'),
                 'transaction_value' => rand(100_000, 299999),
@@ -27,7 +27,7 @@ class TransactionSeeder extends Seeder
             ];
         }
 
-        $data_chunk = array_chunk($data, 1000);
+        $data_chunk = array_chunk($data, 10);
 
         foreach ($data_chunk as $record) {
             Transaction::insert($record);

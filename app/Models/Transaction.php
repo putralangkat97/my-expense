@@ -22,42 +22,4 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function getTimezoneAttribute(): string
-    {
-        return env("APP_TIMEZONE_NAME", "UTC");
-    }
-
-    public function getLocalCurrencyAttribute(): string
-    {
-        return Number::currency($this->transaction_value, in: 'IDR');
-    }
-
-    public function localDateFormatted(string $value): string
-    {
-        return Carbon::parse($value)->timezone($this->getTimezoneAttribute())
-            ->format('D, d M Y');
-    }
-
-    public function localTimeFormatted(string $value): string
-    {
-        return Carbon::parse($value)->timezone($this->getTimezoneAttribute())
-            ->format('H:i A');
-    }
-
-    public function getLocalDatetimeFormatAttribute(): string
-    {
-        return Carbon::parse($this->transaction_date)->timezone($this->getTimezoneAttribute())
-            ->format('D, d M Y H:i A');
-    }
-
-    public function getLocalDateFormatAttribute(): string
-    {
-        return $this->localDateFormatted($this->transaction_date);
-    }
-
-    public function getLocalTimeFormatAttribute(): string
-    {
-        return $this->localTimeFormatted($this->transaction_date);
-    }
 }

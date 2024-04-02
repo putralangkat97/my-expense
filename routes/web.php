@@ -16,9 +16,9 @@ Route::middleware('auth')->group(function () {
                 ->name('index');
             Route::get('/create', \App\Livewire\Transaction\Form::class)
                 ->name('create');
-            Route::get('/{transaction}/show', \App\Livewire\Transaction\Show::class)
+            Route::get('/{id}/show', \App\Livewire\Transaction\Show::class)
                 ->name('show');
-            Route::get('/{transaction}/edit', \App\Livewire\Transaction\Form::class)
+            Route::get('/{id}/edit', \App\Livewire\Transaction\Form::class)
                 ->name('edit');
         });
 

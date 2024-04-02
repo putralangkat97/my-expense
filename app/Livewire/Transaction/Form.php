@@ -8,20 +8,20 @@ use Livewire\Component;
 
 class Form extends Component
 {
-    public ?Transaction $transaction;
+    public $id;
     public TransactionForm $form;
 
     public function mount()
     {
-        if (isset($this->transaction)) {
-            $this->form->setTransaction($this->transaction);
+        if ($this->id) {
+            $this->form->setTransaction($this->id);
         }
     }
 
     public function save()
     {
         $message = "created";
-        if (isset($this->transaction)) {
+        if ($this->id) {
             $message = "updated";
         }
         $this->form->insert();
