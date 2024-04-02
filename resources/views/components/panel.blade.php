@@ -2,9 +2,9 @@
     'href' => '#',
 ])
 
-<div {{ $attributes->merge(['class' => 'bg-white overflow-hidden shadow rounded sm:rounded-lg border']) }}>
-    <div class="flex justify-between items-center bg-teal-800/10 p-6">
-        <h2 class="font-medium">
+<div {{ $attributes->merge(['class' => 'bg-white dark:bg-gray-800 overflow-hidden shadow rounded sm:rounded-lg border dark:border-gray-700']) }}>
+    <div class="flex justify-between items-center dark:bg-gray-700/50 p-6">
+        <h2 class="font-medium text-gray-800 dark:text-white">
             {{ $head }}
         </h2>
 

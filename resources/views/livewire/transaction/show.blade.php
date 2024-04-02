@@ -10,15 +10,15 @@
         <div class="grid grid-cols-1 gap-4">
             <div>
                 <x-input-label :value="__('Transaction Name')" />
-                <span>{{ $transaction->transaction_name }}</span>
+                <span class="text-gray-800 dark:text-white">{{ $transaction->transaction_name }}</span>
             </div>
             <div>
                 <x-input-label :value="__('Transaction Date')" />
-                <span>{{ $transaction->local_datetime_format }}</span>
+                <span class="text-gray-800 dark:text-white">{{ $transaction->local_datetime_format }}</span>
             </div>
             <div>
                 <x-input-label :value="__('Amount')" />
-                <span>{{ $transaction->local_currency }}</span>
+                <span class="text-gray-800 dark:text-white">{{ $transaction->local_currency }}</span>
             </div>
 
             <div>

@@ -4,16 +4,16 @@
 ])
 
 <div
-    {{ $attributes->merge(['class' => 'bg-white rounded sm:rounded-lg px-4 sm:px-8 py-4 shadow-sm border border-gray-200']) }}>
+    {{ $attributes->merge(['class' => 'bg-white dark:bg-gray-800 rounded sm:rounded-lg px-4 sm:px-8 py-4 shadow-sm border border-gray-200 dark:border-gray-700']) }}>
     <div class="flex justify-between items-center">
         <div class="flex flex-col justify-start">
             <x-link :href="$viewLink" class="font-medium text-sm sm:text-lg">{{ $transactionName }}</x-link>
-            <div class="text-gray-500 text-sm sm:text-lg">{{ $transactionDate }}</div>
+            <div class="text-gray-500 dark:text-gray-400 text-sm sm:text-lg">{{ $transactionDate }}</div>
         </div>
         <div class="flex justify-between space-x-2 items-center">
-            <div class="text-sm sm:text-lg">{{ $transactionValue }}</div>
+            <div class="text-sm sm:text-lg text-gray-800 dark:text-white">{{ $transactionValue }}</div>
             <x-link :href="$editLink">
-                <svg xmlns="http://www.w3.org/2000/svg" class="text-teal-600 icon icon-tabler icon-tabler-edit w-5 h-5"
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-teal-600 hover:text-teal-500 icon icon-tabler icon-tabler-edit w-5 h-5"
                     width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                     fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
