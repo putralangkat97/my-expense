@@ -64,7 +64,7 @@ class TransactionForm extends Form
             $transaction = Transaction::findOrFail($transaction_id);
             $this->transaction_name = $transaction->transaction_name;
             $this->transaction_value = $transaction->transaction_value;
-            $this->transaction_date = Carbon::parse($transaction->transaction_date)->timezone($transaction->timezone)->toDateTimeString();
+            $this->transaction_date = Carbon::parse($transaction->transaction_date)->timezone(\App\Helpers\LocalDateFormat::getTimezone())->toDateTimeString();
             $this->id = $transaction->id;
         }
     }

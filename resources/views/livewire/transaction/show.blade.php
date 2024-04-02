@@ -14,11 +14,11 @@
             </div>
             <div>
                 <x-input-label :value="__('Transaction Date')" />
-                <span class="text-gray-800 dark:text-white">{{ $transaction->local_datetime_format }}</span>
+                <span class="text-gray-800 dark:text-white">{{ \App\Helpers\LocalDateFormat::localDatetimeFormatted($transaction->transaction_date) }}</span>
             </div>
             <div>
                 <x-input-label :value="__('Amount')" />
-                <span class="text-gray-800 dark:text-white">{{ $transaction->local_currency }}</span>
+                <span class="text-gray-800 dark:text-white">{{ \App\Helpers\LocalDateFormat::getLocalCurrency($transaction->transaction_value) }}</span>
             </div>
 
             <div>

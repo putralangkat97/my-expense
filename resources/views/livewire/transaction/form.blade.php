@@ -36,13 +36,13 @@
                     @enderror
                 </div>
 
-                @if ($transaction)
+                @if ($id)
                     <x-text-input type="hidden" wire:model="form.id" />
                 @endif
 
                 <div>
                     <x-primary-button>
-                        {{ $transaction ? __('Update') : __('Submit') }}
+                        {{ $id ? __('Update') : __('Submit') }}
                     </x-primary-button>
                 </div>
             </div>
