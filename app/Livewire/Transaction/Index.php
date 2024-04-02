@@ -18,6 +18,10 @@ class Index extends Component
         $new_transactions = Transaction::where('user_id', Auth::user()->id)
             ->simplePaginate(8);
 
+        $new_transactions =  $new_transactions->setCollection(
+            $new_transactions->groupBy('transaction_date')
+        );
+
         return view('livewire.transaction.index', [
             'transactions' => $new_transactions,
         ]);
