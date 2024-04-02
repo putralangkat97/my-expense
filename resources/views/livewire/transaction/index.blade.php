@@ -24,7 +24,7 @@
         @endforelse
     </div>
 
-    @if ($data_count <= 10 || $count != $data_count)
+    @if ($data_count >= 10 && $count != $data_count)
         <x-primary-button wire:click="loadMore">
             {{ __('Load More') }}
         </x-primary-button>

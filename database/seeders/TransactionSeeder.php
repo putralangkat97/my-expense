@@ -16,7 +16,7 @@ class TransactionSeeder extends Seeder
     {
         DB::table('transactions')->truncate();
 
-        for ($i = 0; $i < 27; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             $data[] = [
                 'transaction_name' => 'TRX' . rand(2000, 3999) . now()->format('Ymd'),
                 'transaction_value' => rand(100_000, 299999),
