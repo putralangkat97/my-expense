@@ -136,4 +136,6 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
+    'timezone_name' => env('APP_TIMEZONE_NAME', 'UTC'),
+
 ];

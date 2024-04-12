@@ -3,7 +3,6 @@
 namespace App\Livewire\Transaction;
 
 use App\Livewire\Forms\TransactionForm;
-use App\Models\Transaction;
 use Livewire\Component;
 
 class Form extends Component

@@ -2,20 +2,23 @@
 
 namespace App\Livewire\Forms;
 
-use App\Models\Transaction;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Livewire\Attributes\Validate;
+use \App\Helpers\LocalDateFormat;
+use App\Repository\Repositories\TransactionRepository;
 use Livewire\Form;
 
 class TransactionForm extends Form
 {
+    protected TransactionRepository $transactionRepository;
     public $transaction_name = '';
     public $transaction_value = '';
     public $transaction_date = '';
     public $id;
+
+    public function boot(TransactionRepository $transactionRepository)
+    {
+        $this->transactionRepository = $transactionRepository;
+    }
 
     public function rules()
     {
@@ -35,36 +38,27 @@ class TransactionForm extends Form
             'transaction_date'
         ]);
 
-        DB::beginTransaction();
-        try {
-            if ($this->id) {
-                $transaction = Transaction::findOrFail($this->id);
-            } else {
-                $transaction = new Transaction();
-            }
-            $transaction_date = date('Y-m-d H:i:s', strtotime($validated['transaction_date']));
-            $transaction->transaction_name = $validated['transaction_name'];
-            $transaction->transaction_value = $validated['transaction_value'];
-            $transaction->transaction_date = Carbon::parse($transaction_date, $transaction->timezone)
-                ->timezone('UTC')
-                ->toDateTimeString();
-            $transaction->user_id = Auth::user()->id;
-            $transaction->save();
-
-            DB::commit();
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            Log::error($th->getMessage());
+        if ($this->id) {
+            $this->transactionRepository->updateATransaction(
+                transaction_id: $this->id,
+                data: $validated
+            );
+        } else {
+            $this->transactionRepository->createATransaction(
+                data: $validated
+            );
         }
     }
 
     public function setTransaction($transaction_id)
     {
         if ($transaction_id) {
-            $transaction = Transaction::findOrFail($transaction_id);
+            $transaction = $this->transactionRepository->getATransaction($transaction_id);
             $this->transaction_name = $transaction->transaction_name;
             $this->transaction_value = $transaction->transaction_value;
-            $this->transaction_date = Carbon::parse($transaction->transaction_date)->timezone(\App\Helpers\LocalDateFormat::getTimezone())->toDateTimeString();
+            $this->transaction_date = Carbon::parse($transaction->transaction_date)
+                ->timezone(LocalDateFormat::getTimezone())
+                ->toDateTimeString();
             $this->id = $transaction->id;
         }
     }

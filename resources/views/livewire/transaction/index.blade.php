@@ -24,9 +24,11 @@
         @endforelse
     </div>
 
+    <div wire:loading wire:target="loadMore" class="h-12 w-full bg-gray-100 dark:bg-gray-800/50 rounded animate-pulse"></div>
+
     @if ($data_count >= 10 && $count != $data_count)
-        <x-primary-button wire:click="loadMore">
+        <span x-intersect:full="$wire.loadMore()">
             {{ __('Load More') }}
-        </x-primary-button>
+        </span>
     @endif
 </div>

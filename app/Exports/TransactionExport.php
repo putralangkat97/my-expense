@@ -17,18 +17,28 @@ class TransactionExport implements FromCollection, WithMapping, WithHeadings, Wi
 {
     use Exportable;
 
-    public function __construct(protected string|int $user_id, private int $current_row = 1)
-    {
+    public function __construct(
+        protected string|int $user_id,
+        protected string $month,
+        protected string|int $year
+    ) {
     }
 
     public function collection(): Collection
     {
-        return Transaction::where('user_id', $this->user_id)
-            ->orderBy('transaction_date')
+        $transaction = Transaction::query();
+        $transaction = $transaction->where('user_id', $this->user_id);
+        if ($this->year && $this->month) {
+            // dd("year-{$this->year}");
+            $transaction = $transaction->whereYear('transaction_date', $this->year)
+                ->whereMonth('transaction_date', $this->month);
+        }
+
+        return $transaction->orderBy('transaction_date')
             ->get();
     }
 
-    public function prepareRows($rows)
+    public function prepareRows(array|object $rows): array
     {
         $sum = 0;
         foreach ($rows as $row) {
