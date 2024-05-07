@@ -21,8 +21,6 @@
     <div class="relative min-h-screen bg-gray-50 dark:bg-gray-900">
         @include('layouts.navigation')
 
-        @stack('alert')
-
         <!-- Page Heading -->
         @if (isset($header))
             <header class="bg-white dark:bg-gray-700 shadow">
@@ -34,7 +32,7 @@
 
         <!-- Page Content -->
         <main>
-            <div class="py-12">
+            <div class="py-6 md:py-12">
                 <div class="w-full px-2 sm:max-w-7xl mx-auto sm:px-6 lg:px-8">
                     {{ $slot }}
                 </div>

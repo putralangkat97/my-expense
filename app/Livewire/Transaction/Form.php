@@ -24,7 +24,8 @@ class Form extends Component
             $message = "updated";
         }
         $this->form->insert();
-        session()->flash('success', __("Transaction {$message} successfully"));
+
+        toastr()->success(__("Transaction {$message} successfully"), "Success");
         return $this->redirectRoute('transaction.index', navigate: true);
     }
 

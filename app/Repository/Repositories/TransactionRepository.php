@@ -12,13 +12,20 @@ use Illuminate\Support\Facades\Log;
 
 class TransactionRepository implements TransactionInterface
 {
-    public function getAllTransactions(int $limit = 10, int $loads = 0)
+    public function getAllTransactions(bool $filter = false, string $value = "")
     {
-        return Transaction::where('user_id', Auth::user()->id)
-            ->offset($limit * $loads)
-            ->limit($limit)
-            ->orderBy('transaction_date', 'desc')
-            ->get();
+        $transactions = Transaction::where('user_id', Auth::user()->id);
+        if ($filter) {
+            $transactions = $transactions->whereAny([
+                'transaction_name',
+                'transaction_value',
+                'transaction_date',
+            ], "LIKE", "%{$value}%");
+        }
+        $transactions = $transactions->orderBy('transaction_date', 'desc')
+            ->simplePaginate(10);
+
+        return $transactions;
     }
 
     public function getATransaction(string|int $transaction_id)

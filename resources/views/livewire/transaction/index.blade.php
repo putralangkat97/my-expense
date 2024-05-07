@@ -1,13 +1,11 @@
 <div class="fadeinout">
-    @session('success')
-        @push('alert')
-            <x-alert type="success">{{ $value }}</x-alert>
-        @endpush
-    @endsession
-
     <x-primary-button-link :href="route('transaction.create')" class="mb-4">
         {{ __('Create') }}
     </x-primary-button-link>
+
+    <div class="mb-5">
+        <x-text-input type="text" placeholder="Search transaction" wire:model.live.debounce.500ms="search" class="block mt-1 w-full" />
+    </div>
 
     <div class="mb-5">
         @forelse ($transactions as $index => $transaction)
@@ -23,12 +21,5 @@
             </div>
         @endforelse
     </div>
-
-    <div wire:loading wire:target="loadMore" class="h-12 w-full bg-gray-100 dark:bg-gray-800/50 rounded animate-pulse"></div>
-
-    @if ($data_count >= 10 && $count != $data_count)
-        <span x-intersect:full="$wire.loadMore()">
-            {{ __('Load More') }}
-        </span>
-    @endif
+    {{ $transactions->links() }}
 </div>
