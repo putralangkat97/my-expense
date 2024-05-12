@@ -1,10 +1,19 @@
 <div class="fadeinout">
-    <x-primary-button-link :href="route('transaction.create')" class="mb-4">
-        {{ __('Create') }}
-    </x-primary-button-link>
+    <div class="flex justify-between items-center mb-4">
+        <x-primary-button-link :href="route('transaction.create')" class="">
+            {{ __('Create') }}
+        </x-primary-button-link>
+        <x-select-input wire:model.live="perPage" class="h-10">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </x-select-input>
+    </div>
 
     <div class="mb-5">
-        <x-text-input type="text" placeholder="Search transaction" wire:model.live.debounce.500ms="search" class="block mt-1 w-full" />
+        <x-text-input type="text" placeholder="Search transaction" wire:model.live.debounce.500ms="search"
+            class="block mt-1 w-full" />
     </div>
 
     <div class="mb-5">

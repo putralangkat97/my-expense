@@ -13,6 +13,7 @@ class Index extends Component
 
     private TransactionRepository $transactionRepository;
     public $search = '';
+    public $perPage = 10;
 
     public function boot(TransactionRepository $transactionRepository)
     {
@@ -23,7 +24,8 @@ class Index extends Component
     {
         $transactions = $this->transactionRepository->getAllTransactions(
             filter: $this->search != '' ? true : false,
-            value: $this->search != '' ? $this->search : ''
+            value: $this->search != '' ? $this->search : '',
+            limit: $this->perPage,
         );
 
         return view('livewire.transaction.index', [

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 
 class TransactionRepository implements TransactionInterface
 {
-    public function getAllTransactions(bool $filter = false, string $value = "")
+    public function getAllTransactions(bool $filter = false, string $value = "", string|int $limit = 10)
     {
         $transactions = Transaction::where('user_id', Auth::user()->id);
         if ($filter) {
@@ -22,8 +22,9 @@ class TransactionRepository implements TransactionInterface
                 'transaction_date',
             ], "LIKE", "%{$value}%");
         }
+
         $transactions = $transactions->orderBy('transaction_date', 'desc')
-            ->simplePaginate(10);
+            ->simplePaginate($limit);
 
         return $transactions;
     }

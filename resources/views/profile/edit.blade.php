@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <div class="mx-auto space-y-6">
         <x-panel class="fadeinout">
             <div class="max-w-xl">
                 @include('profile.partials.update-profile-information-form')
