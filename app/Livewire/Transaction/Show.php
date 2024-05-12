@@ -8,6 +8,7 @@ use Livewire\Component;
 class Show extends Component
 {
     protected TransactionRepository $transactionRepository;
+
     public $id;
 
     public function boot(TransactionRepository $transactionRepository)

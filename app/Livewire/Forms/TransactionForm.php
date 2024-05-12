@@ -2,17 +2,21 @@
 
 namespace App\Livewire\Forms;
 
-use Carbon\Carbon;
-use \App\Helpers\LocalDateFormat;
+use App\Helpers\LocalDateFormat;
 use App\Repository\Repositories\TransactionRepository;
+use Carbon\Carbon;
 use Livewire\Form;
 
 class TransactionForm extends Form
 {
     protected TransactionRepository $transactionRepository;
+
     public $transaction_name = '';
+
     public $transaction_value = '';
+
     public $transaction_date = '';
+
     public $id;
 
     public function boot(TransactionRepository $transactionRepository)
@@ -35,7 +39,7 @@ class TransactionForm extends Form
         $validated = $this->only([
             'transaction_name',
             'transaction_value',
-            'transaction_date'
+            'transaction_date',
         ]);
 
         if ($this->id) {

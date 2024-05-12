@@ -5,7 +5,7 @@
  * (c) Younes KHOUBZA <younes.khoubza@gmail.com>
  */
 
-return array(
+return [
     /*
     |--------------------------------------------------------------------------
     | Toastr options
@@ -29,4 +29,4 @@ return array(
         'newestOnTop' => true,
         'progressBar' => true,
     ],
-);
+];

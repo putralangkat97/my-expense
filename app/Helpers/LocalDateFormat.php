@@ -9,7 +9,7 @@ class LocalDateFormat
 {
     public static function getTimezone(): string
     {
-        return config("app.timezone_name");
+        return config('app.timezone_name');
     }
 
     public static function getLocalCurrency(string|int $value): string

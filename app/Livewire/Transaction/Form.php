@@ -8,6 +8,7 @@ use Livewire\Component;
 class Form extends Component
 {
     public $id;
+
     public TransactionForm $form;
 
     public function mount()
@@ -19,13 +20,14 @@ class Form extends Component
 
     public function save()
     {
-        $message = "created";
+        $message = 'created';
         if ($this->id) {
-            $message = "updated";
+            $message = 'updated';
         }
         $this->form->insert();
 
-        toastr()->success(__("Transaction {$message} successfully"), "Success");
+        toastr()->success(__("Transaction {$message} successfully"), 'Success');
+
         return $this->redirectRoute('transaction.index', navigate: true);
     }
 

@@ -9,10 +9,13 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
-    use WithPagination, WithoutUrlPagination;
+    use WithoutUrlPagination;
+    use WithPagination;
 
     private TransactionRepository $transactionRepository;
+
     public $search = '';
+
     public $perPage = 10;
 
     public function boot(TransactionRepository $transactionRepository)
