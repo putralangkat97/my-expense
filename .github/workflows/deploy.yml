@@ -18,6 +18,7 @@ jobs:
         port: 22
         script: |
           cd /www/wwwroot/expense.anggitutomo.com/app
+          git config --global --add safe.directory /www/www***/expense.anggitutomo.com/app
           git pull origin production
           git status
           npm install --only=prod
